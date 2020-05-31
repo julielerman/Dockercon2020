@@ -1,4 +1,4 @@
-# Dockercon2020
+# DockerCon 2020
 Demo code from "Dev and Test Agility for your Database with Docker"
 
 Watch the 30 minute session on demand at: 
@@ -16,3 +16,5 @@ This is the "before", where we have a running app
 
 Stage-Two Branch
 This is after there's been a small model change which also demands a change to the database schema and seed data. 
+
+See theurlist.com/lermandockercon2020  for links to references.

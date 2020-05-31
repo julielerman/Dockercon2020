@@ -1,4 +1,4 @@
-# Dockercon2020
+# DockerCon 2020
 Demo code from "Dev and Test Agility for your Database with Docker"
 
 Watch the 30 minute session on demand at: 

@@ -13,6 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+
   
 # Docker Compose
 # Build, push or run multi-container Docker applications. Task can be used with Docker or Azure Container registry.
@@ -43,3 +44,10 @@ steps:
     dockerComposeFile: docker-compose-test.yml
     action: Run a Docker Compose command
     dockerComposeCommand: up unittests
+  
+- script: |
+    #docker build ./flyway -t $(dockerId)/$(imageName)
+    #docker login -u $(dockerId) -p $(dockerPassword)
+    #docker push $(dockerId)/ignite-apply-sql-updates-job
+  #workingDirectory: '$(modulePath)'
+  displayName: 'Build, Login, Push SQL Kuberentes Job'

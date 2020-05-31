@@ -18,7 +18,7 @@ services:
     ports:
       - "1620:1433"
   migration:
-    image: flyway/flyway
+    image: flyway/flyway:latest
     container_name: flyway_migration_julie
     volumes:
     - ./flyway/sql:/flyway/sql

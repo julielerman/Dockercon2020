@@ -13,8 +13,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-#- script: dotnet build --configuration $(buildConfiguration)
-# displayName: 'dotnet build $(buildConfiguration)'
+
   
 # Docker Compose
 # Build, push or run multi-container Docker applications. Task can be used with Docker or Azure Container registry.

@@ -16,15 +16,16 @@ services:
     image: mcr.microsoft.com/mssql/server
     environment:
       SA_PASSWORD: "P@ssword1"
-      ACCEPT_EULA: "Y" 
+      ACCEPT_EULA: "Y"
     ports:
-      - "1620:1433" 
+      - "1620:1433"
   migration:
-    image: flyway/flyway
+    image: flyway/flyway:latest
     container_name: flyway_migration_julie
     volumes:
     - ./flyway/sql:/flyway/sql
+    - ./flyway/bin:/flyway/bin
     entrypoint: ["flyway"]      
     command: -connectRetries=20 -url=jdbc:sqlserver://db;database=master -user=sa -password=P@ssword1 -mixed=true migrate
     depends_on:
-      - db
+    - db

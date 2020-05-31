@@ -1,0 +1,15 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 as base
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+
+WORKDIR /src
+
+# restore
+COPY ["./API/Agilistas.csproj", "API/"]
+RUN dotnet restore API/Agilistas.csproj
+COPY ./ModelTests/ModelTests.csproj ./ModelTests/
+RUN dotnet restore ModelTests/ModelTests.csproj
+
+# copy src
+COPY . .
+RUN chmod +x ModelTests/wait-for-it.sh
+RUN chmod +x ModelTests/entrypoint-tests.sh

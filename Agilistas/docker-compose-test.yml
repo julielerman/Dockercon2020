@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  unittests:
+    build: 
+      dockerfile: Dockerfile-test 
+      context: .
+    environment:
+      - ConnectionStrings:DB_Conn
+    entrypoint: ["bash","ModelTests/entrypoint-tests.sh", "--timeout=30"] 
+    depends_on:
+      - migration
+  db:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      SA_PASSWORD: "P@ssword1"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1620:1433"
+  migration:
+    image: flyway/flyway
+    container_name: flyway_migration_julie
+    volumes:
+    - ./flyway/sql:/flyway/sql
+    entrypoint: ["flyway"]      
+    command: -connectRetries=20 -url=jdbc:sqlserver://db;database=master -user=sa -password=P@ssword1 -mixed=true migrate
+    depends_on:
+      - db
+    
